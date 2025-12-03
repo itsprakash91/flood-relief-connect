@@ -8,7 +8,7 @@ Create a `.env` file in the root directory (`Flood-Relief-Connect/`) with the fo
 
 ```env
 # MongoDB Atlas Connection
-MONGODB_URI=mongodb+srv://<dbName></dbName>:<password></password>@cluster0.5huypzl.mongodb.net
+MONGODB_URI=mongodb+srv://<dbName>:<password>@cluster0.5huypzl.mongodb.net
 
 # Server Configuration
 PORT=4000
