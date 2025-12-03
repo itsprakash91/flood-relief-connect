@@ -8,13 +8,13 @@ Create a `.env` file in the root directory (`Flood-Relief-Connect/`) with the fo
 
 ```env
 # MongoDB Atlas Connection
-MONGODB_URI=mongodb+srv://floodAdmin:flood912863@cluster0.5huypzl.mongodb.net
+MONGODB_URI=mongodb+srv://<dbName></dbName>:<password></password>@cluster0.5huypzl.mongodb.net
 
 # Server Configuration
 PORT=4000
 NODE_ENV=development
 
-# CORS Configuration  
+# CORS Configuration
 CORS_ORIGIN=http://localhost:5173
 
 # JWT Tokens (Generate strong random strings)
@@ -33,6 +33,7 @@ RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 The error you're seeing is because your IP address is not whitelisted in MongoDB Atlas.
 
 #### Quick Fix:
+
 1. Go to [MongoDB Atlas Dashboard](https://cloud.mongodb.com/)
 2. Select your cluster
 3. Click on **"Network Access"** in the left sidebar
@@ -42,6 +43,7 @@ The error you're seeing is because your IP address is not whitelisted in MongoDB
 6. Click **"Confirm"**
 
 #### Steps in Detail:
+
 1. Login to [MongoDB Atlas](https://cloud.mongodb.com/)
 2. Click on your project
 3. Go to **Network Access** (Security section)
@@ -57,11 +59,13 @@ The error you're seeing is because your IP address is not whitelisted in MongoDB
 ### Step 3: Verify Connection String
 
 Your MongoDB connection string should be in this format:
+
 ```
 mongodb+srv://username:password@cluster0.5huypzl.mongodb.net
 ```
 
 Make sure:
+
 - ✅ Username and password are correct
 - ✅ No spaces in the connection string
 - ✅ Special characters in password are URL-encoded (use %40 for @, %23 for #, etc.)
@@ -71,11 +75,13 @@ Make sure:
 Generate secure random strings for JWT tokens:
 
 **On Windows PowerShell:**
+
 ```powershell
 [Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Maximum 256 }))
 ```
 
 **On Linux/Mac:**
+
 ```bash
 openssl rand -base64 32
 ```
@@ -92,6 +98,7 @@ npm run dev
 ```
 
 You should see:
+
 ```
 ✅ MongoDB connected !! DB HOST: ...
 ✅ Database: floodRelief
@@ -102,7 +109,7 @@ Server is running at port : 4000
 
 1. **"IP not whitelisted"**: Follow Step 2 above
 2. **"Authentication failed"**: Check username/password in connection string
-3. **"Connection timeout"**: 
+3. **"Connection timeout"**:
    - Wait 2-3 minutes after adding IP
    - Check internet connection
    - Verify connection string format
@@ -110,7 +117,7 @@ Server is running at port : 4000
 ### Security Notes:
 
 ⚠️ **Never commit `.env` file to git!**
+
 - It's already in `.gitignore`
 - Keep your secrets safe
 - Use different credentials for production
-
